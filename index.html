@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Someone Special</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- SKY AND CLOUDS -->
+  <div class="sky">
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+    <div class="cloud cloud-three"></div>
+    <div class="cloud cloud-four"></div>
+    
+  </div>
+
+  <!-- WELCOME SCREEN -->
+  <main class="main-content">
+
+    <section class="welcome-section">
+
+      <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
+
+      <h1>To Someone Special</h1>
+
+      <p class="subtitle">
+        Some people make the world feel a little more beautiful.
+      </p>
+
+      <div class="glass-card">
+
+        <label for="personName">
+          This little surprise is for...
+        </label>
+
+        <input
+          type="text"
+          id="personName"
+          placeholder="Enter your name..."
+          autocomplete="off"
+        >
+
+        <button id="continueBtn">
+          Continue →
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- QUESTION SCENE -->
+  <section class="second-scene" id="secondScene">
+
+    <div class="question-card">
+
+      <p class="question-number">
+        QUESTION 01 · ❤️
+      </p>
+
+      <h2 id="questionText">
+        Do you know how special you are to me?
+      </h2>
+
+      <!-- QUESTION 1 OPTIONS -->
+      <div class="answer-options" id="answerOptions">
+
+        <button class="answer-btn" id="yesBtn">
+          Yes, I know ❤️
+        </button>
+
+        <button class="answer-btn" id="noBtn">
+          No, I don't 🙈
+        </button>
+
+      </div>
+
+      <!-- PERCENTAGE GAME -->
+      <div class="percentage-game" id="percentageGame">
+
+        <button
+          class="answer-btn"
+          type="button"
+          id="randomGuess"
+        >
+          🎲 Pick a random percentage
+        </button>
+
+        <input
+          type="number"
+          id="percentageInput"
+          min="0"
+          max="100"
+          placeholder="Enter your guess..."
+        >
+
+        <button class="answer-btn" id="submitGuess">
+          Submit my guess ❤️
+        </button>
+
+      </div>
+
+      <!-- QUESTION 3 -->
+      <div class="question-three" id="questionThree">
+
+        <button class="answer-btn" id="optionA">
+          You, obviously! ❤️
+        </button>
+
+        <button class="answer-btn" id="optionB">
+          Someone else? 👀
+        </button>
+
+      </div>
+
+      <!-- FINAL QUESTION -->
+      <div class="final-question" id="finalQuestion">
+
+        <h2>Do you love me? 🥺</h2>
+
+        <div class="final-options">
+
+          <button class="answer-btn" id="loveYes">
+            Yes, I do! ❤️
+          </button>
+
+          <button class="answer-btn" id="loveNo">
+            No 🙈
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,587 @@
+/* =========================================
+   1. GLOBAL RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(205, 216, 255, 0.42) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #0808c8 0%,
+      #111bc9 32%,
+      #293bd4 52%,
+      #637de3 72%,
+      #a5b7ef 88%,
+      #d0dafa 100%
+    );
+}
+
+
+/* =========================================
+   2. FULL SCREEN BLUE SKY
+========================================= */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 78%,
+      rgba(205, 216, 255, 0.42) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      #0808c8 0%,
+      #111bc9 32%,
+      #293bd4 52%,
+      #637de3 72%,
+      #a5b7ef 88%,
+      #d0dafa 100%
+    );
+}
+
+/* Soft sunlight near horizon */
+
+.sky::after {
+  content: "";
+  position: absolute;
+  width: min(700px, 130vw);
+  height: min(700px, 130vw);
+  left: 50%;
+  bottom: -115vw;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(235, 249, 255, 0.65) 0%,
+    rgba(190, 230, 250, 0.35) 30%,
+    rgba(150, 210, 240, 0.15) 55%,
+    transparent 72%
+  );
+}
+
+
+/* =========================================
+   3. DECORATIVE WHITE CLOUDS
+   UNCHANGED
+========================================= */
+
+.cloud {
+  position: absolute;
+  width: 250px;
+  height: 70px;
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.75);
+  filter: blur(20px);
+  opacity: 0.85;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.25);
+}
+
+.cloud-one {
+  top: 65%;
+  left: -80px;
+}
+
+.cloud-two {
+  top: 75%;
+  right: -90px;
+}
+
+.cloud-three {
+  top: 55%;
+  left: 35%;
+}
+
+.cloud-four {
+  top: 85%;
+  left: 60%;
+}
+
+
+/* =========================================
+   4. ANIMATED CLOUD CANVAS
+========================================= */
+
+#cloudCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   5. WELCOME SCREEN
+========================================= */
+
+.main-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+}
+
+.welcome-section {
+  width: 100%;
+  max-width: 750px;
+  text-align: center;
+  color: white;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 22px;
+  opacity: 0.9;
+  color: #fff0e8;
+}
+
+.welcome-section h1 {
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 500;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+  color: #fff7ef;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 38px;
+  color: #ffede2;
+}
+
+
+/* =========================================
+   6. WELCOME GLASS CARD
+========================================= */
+
+.glass-card {
+  width: 100%;
+  max-width: 430px;
+  margin: auto;
+  padding: 35px;
+  border-radius: 28px;
+
+  background: rgba(255, 235, 220, 0.16);
+  border: 1px solid rgba(255, 239, 220, 0.4);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: 0 20px 60px rgba(83, 35, 48, 0.2);
+}
+
+.glass-card label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: #fff5ec;
+}
+
+.glass-card input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.glass-card input::placeholder {
+  color: rgba(255, 245, 235, 0.8);
+}
+
+.glass-card input:focus {
+  border-color: #fff1d5;
+  box-shadow: 0 0 15px rgba(255, 220, 180, 0.2);
+}
+
+
+/* =========================================
+   7. CONTINUE BUTTON
+========================================= */
+
+.glass-card button {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  background: rgba(165, 76, 86, 0.8);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    transform 0.22s ease;
+}
+
+.glass-card button:hover {
+  filter: brightness(1.12);
+}
+
+.glass-card button:active {
+  transform: scale(0.94);
+}
+
+.glass-card button.clicked {
+  background: #fff5e8;
+  color: #a65361;
+  border-color: white;
+  animation: applePop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes applePop {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.92); }
+  65% { transform: scale(1.07); }
+  82% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+
+/* =========================================
+   8. SECOND SCENE
+========================================= */
+
+.second-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 12px;
+  overflow-y: auto;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.97);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0.7s;
+}
+
+.second-scene.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+
+/* =========================================
+   9. LIQUID GLASS QUESTION CARD
+========================================= */
+
+.question-card {
+  width: min(390px, 94vw);
+  min-height: 0;
+  margin: auto;
+  padding: 25px 22px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  background: rgba(255, 235, 220, 0.17);
+  border: 1px solid rgba(255, 239, 220, 0.4);
+  border-radius: 30px;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow: 0 20px 60px rgba(83, 35, 48, 0.2);
+}
+
+.question-number {
+  color: #fff5ec;
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.question-card h2 {
+  color: #fffaf4;
+  font-size: clamp(21px, 5vw, 28px);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+}
+
+
+/* =========================================
+   10. ANSWER BUTTONS
+========================================= */
+
+.answer-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+
+  color: white;
+  font-size: 15px;
+
+  background: rgba(255, 235, 220, 0.19);
+  border: 1px solid rgba(255, 245, 235, 0.45);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    background 0.2s ease;
+}
+
+.answer-btn:hover {
+  background: rgba(255, 245, 230, 0.32);
+  transform: scale(1.025);
+}
+
+.answer-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* =========================================
+   11. PERCENTAGE GAME
+========================================= */
+
+.percentage-game {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.percentage-game.show {
+  display: flex;
+}
+
+.percentage-game input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  outline: none;
+
+  background: rgba(255, 235, 220, 0.18);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.percentage-game input::placeholder {
+  color: rgba(255, 245, 235, 0.8);
+}
+
+.percentage-game input:focus {
+  border-color: white;
+}
+
+.percentage-game button {
+  width: 100%;
+}
+
+
+/* =========================================
+   12. QUESTION THREE
+========================================= */
+
+.question-three {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.question-three.show {
+  display: flex;
+}
+
+.question-three button {
+  width: 100%;
+}
+
+
+/* =========================================
+   13. FINAL QUESTION
+========================================= */
+
+.final-question {
+  display: none;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.final-question.show {
+  display: flex;
+}
+
+.final-question h2 {
+  color: #fffaf4;
+  font-size: 27px;
+  line-height: 1.4;
+}
+
+.final-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.final-options button {
+  width: 100%;
+}
+
+
+/* =========================================
+   14. MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 20px;
+  }
+
+  .glass-card {
+    padding: 26px 20px;
+  }
+
+  .question-card {
+    width: min(360px, 94vw);
+    padding: 22px 18px;
+    gap: 13px;
+    border-radius: 27px;
+  }
+
+  .question-card h2 {
+    font-size: 25px;
+  }
+
+  .answer-btn {
+    padding: 14px;
+  }
+}
+
+
+/* =========================================
+   15. SMALL SCREEN HEIGHT FIX
+========================================= */
+
+@media (max-height: 600px) {
+  .second-scene {
+    align-items: flex-start;
+  }
+
+  .question-card {
+    margin: 8px auto;
+    padding: 16px;
+    gap: 10px;
+  }
+}
+
+
+/* =========================================
+   16. BLUE CONTINUE BUTTON
+========================================= */
+
+#continueBtn {
+  background: linear-gradient(135deg, #2878e8, #1455c0) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 5px 18px rgba(20, 85, 192, 0.3);
+}
+
+#continueBtn:hover {
+  background: linear-gradient(135deg, #3989f5, #1c63d5) !important;
+  transform: translateY(-2px);
+}
+/* QUESTION THREE BUTTON FIX */
+
+.question-three {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.question-three.show {
+  display: flex;
+}
+
+.question-three button {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+  cursor: pointer;
+}
